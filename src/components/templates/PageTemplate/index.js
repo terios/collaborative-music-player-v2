@@ -22,7 +22,9 @@ const Header = styled.header`
   z-index: 999;
 `
 
-const Hero = styled.section``
+const Hero = styled.section`
+margin-top: 12px;
+`
 
 const Content = styled.section`
   width: 100%;
