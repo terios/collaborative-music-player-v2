@@ -9,8 +9,7 @@ export const initialState = {
     id: 'leC5WE7P2To',
     owner: 'The father',
     title: 'cat steven Father and son'
-  }],
-  currentVideo: [],
-  played: []
+  }]
 }
-export const getPlaylistVideos = (state = initialState) => state.playlist || initialState.playlist
+
+export const getPlaylistVideos = (state=initialState) => state.playlist || initialState.playlist

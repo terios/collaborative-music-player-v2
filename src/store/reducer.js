@@ -15,5 +15,4 @@ req.keys().forEach((key) => {
   const storeName = camelCase(key.replace(/\.\/(.+)\/.+$/, '$1'))
   reducers[storeName] = req(key).default
 })
-
 export default combineReducers(reducers)

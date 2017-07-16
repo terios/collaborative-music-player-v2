@@ -14,15 +14,15 @@ class PlaylistContainer extends Component {
   }
 
   render() {
-    return <Playlist name='okok' getThumbnail={this.thumbnail} selectVideo={selectVideo} {...this.props}/>
+    return <Playlist getThumbnail={this.thumbnail} selectVideo={selectVideo} {...this.props}/>
   }
 }
 
-const mapStateToProps = (state, {name, isOpen}) => ({
-  videos: isOpen || fromPlaylist.getPlaylistVideos(state)
+const mapStateToProps = (state) => ({
+  videos: fromPlaylist.getPlaylistVideos(state)
 })
 
-const mapDispatchToProps = (dispatch, {name}) => ({
+const mapDispatchToProps = (dispatch) => ({
   selectVideo: (video) => dispatch(selectVideo(video))
 })
 

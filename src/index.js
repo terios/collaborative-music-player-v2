@@ -11,7 +11,21 @@ import configureStore from 'store/configure'
 import api from 'services/api'
 import App from 'components/App'
 
-const store = configureStore({}, { api: api.create() })
+const store = configureStore({
+    playlist: [
+      {
+        id: 'QAOMIH7cgh0',
+        owner: 'Groot',
+        title: 'Mr blue sty song'
+      }, {
+        id: 'leC5WE7P2To',
+        owner: 'The father',
+        title: 'cat steven Father and son'
+      }
+    ],
+    currentVideo: [],
+    played: []
+  }, { api: api.create() })
 
 const renderApp = () => (
   <Provider store={store}>

@@ -8,7 +8,8 @@ import {
 } from 'components'
 
 import {
-  Playlist
+  Playlist,
+  Player
 } from 'containers'
 
 const Wrapper = styled(Block)`
@@ -64,7 +65,7 @@ const Hero = (props) => {
       <InnerWrapper>
 
         <Section>
-          <div>some text</div>
+          <Player/>
         </Section>
 
         <PlaylistSection>

@@ -8,16 +8,18 @@ const Wrapper = styled.div `
       padding: 10px;
   }
 `
-const VideoPlayer = ({
+const Player = ({
   ...props
 }) => {
+
+  console.log(props);
   return (
     <Wrapper {...props}>
-      <Youtube videoId={props.video.id} opts={props.playerConfig}/>
+      <Youtube videoId={props.video.id} opts={props.playerConfig()}/>
     </Wrapper>
   )
 }
 
-VideoPlayer.propTypes = {}
+Player.propTypes = {}
 
-export default VideoPlayer
+export default Player
