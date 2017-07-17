@@ -1,32 +1,73 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import { injectGlobal, ThemeProvider } from 'styled-components'
+import React, {Component} from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
+//import {deepOrange500} from 'material-ui/styles/colors';
+import FlatButton from 'material-ui/FlatButton';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import { HomePage, SamplePage, NotFoundPage } from 'components'
-import { GoogleTagManager } from 'containers'
+const styles = {
+  container: {
+    textAlign: 'center',
+    paddingTop: 200,
+  },
+};
 
-// https://github.com/diegohaz/arc/wiki/Styling
-import theme from './themes/default'
 
-injectGlobal`
-  body {
-    margin: 0;
+class App extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.handleTouchTap = this.handleTouchTap.bind(this);
+
+    this.state = {
+      open: false,
+    };
   }
-`
 
-const App = () => {
-  return (
-    <div>
-      <GoogleTagManager />
-      <ThemeProvider theme={theme}>
-        <Switch>
-          <Route path="/" component={HomePage} exact />
-          <Route path="/sample-page" component={SamplePage} />
-          <Route component={NotFoundPage} />
-        </Switch>
-      </ThemeProvider>
-    </div>
-  )
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  }
+
+  handleTouchTap() {
+    this.setState({
+      open: true,
+    });
+  }
+
+  render() {
+    const standardActions = (
+      <FlatButton
+        label="Ok"
+        primary={true}
+        onTouchTap={this.handleRequestClose}
+      />
+    );
+
+    return (
+      <MuiThemeProvider>
+        <div style={styles.container}>
+          <Dialog
+            open={this.state.open}
+            title="Super Secret Password"
+            actions={standardActions}
+            onRequestClose={this.handleRequestClose}
+          >
+            1-2-3-4-5
+          </Dialog>
+          <h1>Material-UI</h1>
+          <h2>example project</h2>
+          <RaisedButton
+            label="Super Secret Password"
+            secondary={true}
+            onTouchTap={this.handleTouchTap}
+          />
+        </div>
+      </MuiThemeProvider>
+    );
+  }
 }
 
-export default App
+export default App;
