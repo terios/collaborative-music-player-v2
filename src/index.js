@@ -26,9 +26,7 @@ const store = configureStore({}, history)
 const renderApp = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
-        <Route exact path="/" component={App}/>
-      </div>
+      <App/>
     </ConnectedRouter>
   </Provider>
 )

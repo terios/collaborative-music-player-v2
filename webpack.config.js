@@ -19,6 +19,11 @@ const outputPath = path.join(process.cwd(), 'dist')
 
 
 
+console.log(sourceDir);
+console.log(publicPath);
+console.log(sourcePath);
+console.log(outputPath);
+
 
 const babel = () => () => ({
   module: {
