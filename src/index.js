@@ -5,16 +5,15 @@ import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 
 import createHistory from 'history/createBrowserHistory'
-import {Route} from 'react-router'
 import {ConnectedRouter} from 'react-router-redux'
 
-import {basename} from './config'
-import configureStore from './store/configure'
-import reducer from './store/reducer'
+import {basename} from 'config'
+import configureStore from 'store/configure'
+import reducer from 'store/reducer'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Components
-import App from './components/App.js';
+import App from 'components/App'
 
 injectTapEventPlugin();
 

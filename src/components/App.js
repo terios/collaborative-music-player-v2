@@ -1,13 +1,20 @@
 import React, {Component} from 'react';
+import {Route} from 'react-router'
 
-import {HomePage, ContactPage} from 'components'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {HomePage, ContactPage} from 'components/'
+
+import theme from './themes/default'
 
 const App = () => {
   return (
-    <div>
-      <Route exact path="/" component={HomePage}/>
-      <Route exact path="/contact" component={ContactPage}/>
-    </div>
+    <MuiThemeProvider muiTheme={getMuiTheme(theme)}>
+      <div>
+        <Route exact path="/" component={HomePage}/>
+        <Route exact path="/contact" component={ContactPage}/>
+      </div>
+    </MuiThemeProvider>
   )
 }
 

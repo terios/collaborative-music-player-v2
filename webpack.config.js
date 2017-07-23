@@ -17,14 +17,6 @@ const publicPath = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
 const sourcePath = path.join(process.cwd(), sourceDir)
 const outputPath = path.join(process.cwd(), 'dist')
 
-
-
-console.log(sourceDir);
-console.log(publicPath);
-console.log(sourcePath);
-console.log(outputPath);
-
-
 const babel = () => () => ({
   module: {
     rules: [
@@ -43,10 +35,9 @@ const assets = () => () => ({
 
 const resolveModules = modules => () => ({
   resolve: {
-    modules: ['./src/store'].concat(modules, ['node_modules']),
+    modules: [].concat(path.resolve(modules), ['node_modules']),
   },
 })
-
 
 const config = createConfig([
   entryPoint({
@@ -98,23 +89,3 @@ const config = createConfig([
 ])
 
 module.exports = config
-
-/*
-module.exports = {
-  entry: [path.join(__dirname, 'src/index.js')],
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'index_bundle.js'
-  },
-  plugins: [new HtmlWebpackPlugin({filename: 'index.html', template: './src/public/index.html', inject: 'body'})],
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      }
-    ]
-  }
-}
-*/

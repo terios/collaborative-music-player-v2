@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "npm run dev",
     "env:dev": "cross-env NODE_ENV=development",
-    "env:prod": "cross-env NODE_ENV=production"
+    "env:prod": "cross-env NODE_ENV=production",
+    "dev": "npm run env:dev -- webpack-dev-server"
   },
   "devDependencies": {
     "@webpack-blocks/dev-server2": "^0.4.0",
