@@ -9,9 +9,9 @@ import theme from './themes/default'
 
 const App = () => {
   return (
-    <MuiThemeProvider muiTheme={getMuiTheme(theme)}>
+    <MuiThemeProvider muiTheme={getMuiTheme({userAgent: navigator.userAgent})}>
       <div>
-        <Route exact path="/" component={HomePage}/>
+        <Route exact path="/home" component={HomePage}/>
         <Route exact path="/contact" component={ContactPage}/>
       </div>
     </MuiThemeProvider>

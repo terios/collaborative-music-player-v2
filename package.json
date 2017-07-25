@@ -7,7 +7,16 @@
     "start": "node .",
     "env:dev": "cross-env NODE_ENV=development",
     "env:prod": "cross-env NODE_ENV=production",
-    "dev": "npm run env:dev -- webpack-dev-server"
+    "env:example": "cross-env SOURCE=src-example",
+    "lint": "eslint src private webpack.config.js",
+    "storybook": "start-storybook -p 9001 -c private/storybook",
+    "predev": "npm run prebuild",
+    "dev": "npm run env:dev -- webpack-dev-server",
+    "dev:example": "npm run env:example -- npm run dev",
+    "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
+    "build:copy": "copyfiles public/* public/**/* dist",
+    "prebuild": "npm run build:clean && npm run build:copy",
+    "build": "npm run env:prod -- webpack"
   },
   "devDependencies": {
     "@webpack-blocks/dev-server2": "^0.4.0",

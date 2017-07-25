@@ -131,68 +131,8 @@ const client = createConfig([
   ]),
 
   env('production', [
-    splitVendor(),
-    addPlugins([
-      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
-    ]),
+    splitVendor()
   ]),
 ])
 
 module.exports = client
-
-
-
-
-/*
-
-const config = createConfig([
-  entryPoint({
-    app: sourcePath,
-  }),
-  setOutput({
-    filename: '[name].js',
-    path: outputPath,
-    publicPath,
-  }),
-  defineConstants({
-    'process.env.NODE_ENV': process.env.NODE_ENV,
-    'process.env.PUBLIC_PATH': publicPath.replace(/\/$/, ''),
-  }),
-  addPlugins([
-    new webpack.ProgressPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.join(process.cwd(), 'src/public/index.html'),
-    }),
-  ]),
-  happypack([
-    babel(),
-  ]),
-  assets(),
-  resolveModules(sourceDir),
-
-  env('development', [
-    devServer({
-      contentBase: 'public',
-      stats: 'errors-only',
-      historyApiFallback: { index: publicPath },
-      headers: { 'Access-Control-Allow-Origin': '*' },
-      host,
-      port,
-    }),
-    sourceMaps(),
-    addPlugins([
-      new webpack.NamedModulesPlugin(),
-    ]),
-  ]),
-
-  env('production', [
-    splitVendor(),
-    addPlugins([
-      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
-    ]),
-  ]),
-])
-
-module.exports = config
-*/

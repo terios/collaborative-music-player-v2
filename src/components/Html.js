@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Html = ({ styles, assets, state, content }) => {
-  
+
   return (
-    <html lang="en" {...htmlAttrs}>
+    <html lang="en">
       <head>
         {assets.css.map(path => <link rel="stylesheet" type="text/css" key={path} href={path} />)}
         {styles}
       </head>
-      <body {...bodyAttrs}>
+      <body>
         <main id="app" dangerouslySetInnerHTML={{ __html: content }} />
         <script dangerouslySetInnerHTML={{ __html: state }} />
         {assets.js.map(path => <script key={path} src={path} />)}

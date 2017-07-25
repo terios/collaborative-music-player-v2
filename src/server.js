@@ -18,6 +18,7 @@ import Html from 'components/Html'
 import Error from 'components/Error'
 
 const renderApp = ({ store, context, location, sheet }) => {
+  console.log('-----',context);
   const app = sheet.collectStyles(
     <Provider store={store}>
       <StaticRouter basename={basename} context={context} location={location}>
@@ -31,6 +32,7 @@ const renderApp = ({ store, context, location, sheet }) => {
 const renderHtml = ({ serverState, initialState, content, sheet }) => {
   const styles = sheet.getStyleElement()
   const assets = global.assets
+
   const state = `
     window.__SERVER_STATE__ = ${serialize(serverState)};
     window.__INITIAL_STATE__ = ${serialize(initialState)};
@@ -41,16 +43,20 @@ const renderHtml = ({ serverState, initialState, content, sheet }) => {
 
 const app = express()
 
+global.navigator = global.navigator || {};
+global.navigator.userAgent = global.navigator.userAgent || 'all';
+
 app.use(basename, express.static(path.resolve(process.cwd(), 'dist/public')))
 
 app.use((req, res, next) => {
   const location = req.url
-  const store = configureStore({}, { api: api.create() })
+  const store = configureStore({}, {})
   const context = {}
   const sheet = new ServerStyleSheet()
 
   renderApp({ store, context, location, sheet })
     .then(({ state: serverState, html: content }) => {
+      console.log(context);
       if (context.status) {
         res.status(context.status)
       }
