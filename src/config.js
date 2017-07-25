@@ -6,6 +6,9 @@ const config = {
     isDev: process.env.NODE_ENV !== 'production',
     basename: process.env.PUBLIC_PATH,
     isBrowser: typeof window !== 'undefined',
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 3000,
+    isServer: typeof window === 'undefined',
 //    apiUrl: 'https://jsonplaceholder.typicode.com',
 //    fbAppId: '991453140998882',
 //    googleClientId: '464712936089-q953apdu1bjiqtcjndktnnk1ts4f2cgv.apps.googleusercontent.com',
@@ -15,6 +18,8 @@ const config = {
   development: {},
   production: {
   //  apiUrl: 'https://jsonplaceholder.typicode.com',
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 8080,
   },
 }
 
