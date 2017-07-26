@@ -1,41 +1,63 @@
 // Dependencies
-import React from 'react';
-import {render} from 'react-dom';
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
-import createHistory from 'history/createBrowserHistory'
-import {ConnectedRouter} from 'react-router-redux'
+import createHistory from "history/createBrowserHistory";
+import { ConnectedRouter } from "react-router-redux";
 
-import {basename} from 'config'
-import configureStore from 'store/configure'
-import reducer from 'store/reducer'
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import { basename } from "config";
+import configureStore from "store/configure";
+import reducer from "store/reducer";
+import injectTapEventPlugin from "react-tap-event-plugin";
 
 // Components
-import App from 'components/App'
+import App from "components/App";
 
 injectTapEventPlugin();
 
 // Create a history of your choosing (we're using a browser history in this case)
-const history = createHistory()
+const history = createHistory();
 
-const store = configureStore({}, history)
+const store = configureStore({}, history);
 
-const renderApp = () => (
+store.dispatch({
+  type: "LOAD_STATE",
+  state: {
+    playlist: [
+      {
+        id: "https://www.youtube.com/watch?v=QAOMIH7cgh0",
+        owner: "Groot",
+        title: "Mr blue sty song"
+      },
+      {
+        id: "https://www.youtube.com/watch?v=leC5WE7P2To",
+        owner: "The father",
+        title: "cat steven Father and son"
+      }
+    ],
+    currentVideo: {
+      owner: "Latina",
+      title: "Shakira - Me Enamoré",
+      link: "https://www.youtube.com/watch?v=sPTn0QEhxds"
+    }
+  }
+});
+
+const renderApp = () =>
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App/>
+      <App />
     </ConnectedRouter>
-  </Provider>
-)
+  </Provider>;
 
-const root = document.getElementById('app')
-render(renderApp(), root)
+const root = document.getElementById("app");
+render(renderApp(), root);
 
 if (module.hot) {
-  module.hot.accept('components/App', () => {
-    require('components/App')
-    render(renderApp(), root)
-  })
+  module.hot.accept("components/App", () => {
+    require("components/App");
+    render(renderApp(), root);
+  });
 }

@@ -1,17 +1,14 @@
-import camelCase from 'lodash/camelCase'
-import { combineReducers } from 'redux'
+import camelCase from "lodash/camelCase";
+import { combineReducers } from "redux";
 
-import {
-  routerReducer,
-} from 'react-router-redux'
+import { routerReducer } from "react-router-redux";
 
-const req = require.context('.', true, /\.\/.+\/reducer\.js$/)
+const reducers = { router: routerReducer };
 
-const reducers = {router: routerReducer}
+const req = require.context(".", true, /\.\/.+\/reducer\.js$/);
+req.keys().forEach(key => {
+  const storeName = camelCase(key.replace(/\.\/(.+)\/.+$/, "$1"));
+  reducers[storeName] = req(key).default;
+});
 
-req.keys().forEach((key) => {
-  const storeName = camelCase(key.replace(/\.\/(.+)\/.+$/, '$1'))
-  reducers[storeName] = req(key).default
-})
-
-export default combineReducers(reducers)
+export default combineReducers(reducers);
