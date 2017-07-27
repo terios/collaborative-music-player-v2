@@ -25,22 +25,25 @@ const store = configureStore({}, history);
 store.dispatch({
   type: "LOAD_STATE",
   state: {
-    playlist: [
+    currentPlaylist: [
       {
         id: "https://www.youtube.com/watch?v=QAOMIH7cgh0",
         owner: "Groot",
-        title: "Mr blue sty song"
+        title: "Mr blue sty song",
+        origin: "youtube"
       },
       {
         id: "https://www.youtube.com/watch?v=leC5WE7P2To",
         owner: "The father",
-        title: "cat steven Father and son"
+        title: "cat steven Father and son",
+        origin: "youtube"
       }
     ],
     currentVideo: {
       owner: "Latina",
       title: "Shakira - Me Enamoré",
-      link: "https://www.youtube.com/watch?v=sPTn0QEhxds"
+      link: "https://www.youtube.com/watch?v=sPTn0QEhxds",
+      origin: "youtube"
     }
   }
 });
