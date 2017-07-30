@@ -5,25 +5,27 @@
   <title>ARc - Atomic React</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
 </head>
 
-<body style="margin: 0">
+<body style="margin: 0; font-family: 'Roboto', sans-serif;">
 
   <main id="app"></main>
 
   <script>
-      var WebFontConfig = {
-        google: { families: [ 'Roboto:400,300,500:latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })();
-    </script>
+  var WebFontConfig = {
+  google: { families: ["Roboto:400,300,500:latin"] }
+};
+(function() {
+  var wf = document.createElement("script");
+  wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+  wf.type = "text/javascript";
+  wf.async = "true";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(wf, s);
+})();
+</script>
 </body>
 
 </html>

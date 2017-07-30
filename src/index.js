@@ -40,9 +40,9 @@ store.dispatch({
       }
     ],
     currentVideo: {
-      owner: "Latina",
-      title: "Shakira - Me Enamoré",
-      link: "https://www.youtube.com/watch?v=sPTn0QEhxds",
+      owner: "Anas",
+      title: "Dark souls Soundtrack",
+      link: "https://www.youtube.com/watch?v=xggWJLgN-Es",
       origin: "youtube"
     }
   }

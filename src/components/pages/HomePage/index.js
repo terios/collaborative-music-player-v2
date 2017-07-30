@@ -5,6 +5,8 @@ import { PageTemplate, Header } from "components";
 import { Player, Playlist } from "containers";
 
 const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
   background-color: black;
   display: flex;
   flex-wrap: wrap;
