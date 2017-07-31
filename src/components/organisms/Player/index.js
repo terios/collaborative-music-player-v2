@@ -1,7 +1,8 @@
 import React from "react";
 import ReactPlayer from "react-player";
+import PropTypes from "prop-types";
 import styled from "styled-components";
-// import ReactResizeDetector from "react-resize-detector";
+import ResizeDetector from "react-resize-detector";
 import { grey300, grey100 } from "material-ui/styles/colors";
 
 const VideoWrapper = styled.div`
@@ -31,25 +32,49 @@ const Owner = styled.div`
   font-size: 20px;
 `;
 // ratio = 1.77916667
-const Player = props => {
-  return (
-    <VideoWrapper>
-      <ReactPlayer
-        url={props.currentVideo.link}
-        width="100%"
-        height="100%"
-        controls={true}
-      />
-      <VideoDescription>
-        <Title>
-          {props.currentVideo.title}
-        </Title>
-        <Owner>
-          {props.currentVideo.owner}
-        </Owner>
-      </VideoDescription>
-    </VideoWrapper>
-  );
-};
 
+class Player extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      width: props.width || "600px",
+      height: props.height || "600px"
+    };
+
+    this.onResize = this.onResize.bind(this);
+  }
+
+  onResize(w, h) {
+    this.setState({
+      width: w,
+      height: h
+    });
+  }
+  render() {
+    return (
+      <VideoWrapper className="lolo">
+        <ResizeDetector handleWidth handleHeight onResize={this.onResize} />
+        <ReactPlayer
+          url={this.props.currentVideo.link}
+          width="100%"
+          height="100%"
+          controls={true}
+        />
+        <VideoDescription>
+          <Title>
+            {this.props.currentVideo.title}
+          </Title>
+          <Owner>
+            {this.props.currentVideo.owner}
+          </Owner>
+        </VideoDescription>
+      </VideoWrapper>
+    );
+  }
+}
+
+Player.propTypes = {
+  header: PropTypes.string,
+  children: PropTypes.string
+};
 export default Player;
