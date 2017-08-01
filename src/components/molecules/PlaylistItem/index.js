@@ -29,11 +29,30 @@ const VideoSub = styled.div`
 `;
 
 const PlaylistItem = props => {
-  this.getThumbnail = videoId => `http://img.youtube.com/vi/${videoId}/1.jpg`;
+  this.getThumbnail = video => {
+    let thumbnail = "";
+    switch (video.origin) {
+      case "youtube":
+        let id;
+        if (video.id.indexOf("=") > 0 && video.id.indexOf("&") > 0) {
+          id = video.id.substring(
+            video.id.indexOf("=") + 1,
+            video.id.indexOf("&")
+          );
+        } else if (video.id.indexOf("=") > 0) {
+          id = video.id.substring(video.id.indexOf("=") + 1, video.id.length);
+        }
+        thumbnail = `http://img.youtube.com/vi/${id}/1.jpg`;
+    }
+    return thumbnail;
+  };
 
   return (
-    <ItemWrapper className="videobox">
-      <img src={this.getThumbnail(props.video.id)} />
+    <ItemWrapper
+      className="videobox"
+      onClick={() => props.selectVideo(props.video)}
+    >
+      <img src={this.getThumbnail(props.video)} />
       <VideoDetails>
         <VideoTitle>
           {props.video.title}

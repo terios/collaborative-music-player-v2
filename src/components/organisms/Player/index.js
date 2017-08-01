@@ -6,7 +6,7 @@ import ResizeDetector from "react-resize-detector";
 import { grey300, grey100 } from "material-ui/styles/colors";
 
 const VideoWrapper = styled.div`
-  width: 70%;
+  width: 60%;
   max-width: 850px;
   padding: 30px;
   @media (max-width: 768px) {
@@ -47,7 +47,8 @@ class Player extends React.Component {
   onResize(w, h) {
     this.setState({
       width: w,
-      height: h
+      height: h,
+      ratioHeigth: w / 1.77916667
     });
   }
   render() {
@@ -57,7 +58,7 @@ class Player extends React.Component {
         <ReactPlayer
           url={this.props.currentVideo.link}
           width="100%"
-          height="100%"
+          height={this.state.ratioHeigth}
           controls={true}
         />
         <VideoDescription>

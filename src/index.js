@@ -37,6 +37,24 @@ store.dispatch({
         owner: "The father",
         title: "cat steven Father and son",
         origin: "youtube"
+      },
+      {
+        id: "https://www.youtube.com/watch?v=Aa0kwIYozvs",
+        owner: "120bpm",
+        title: "DubVision feat. Nevve - Something Real",
+        origin: "youtube"
+      },
+      {
+        id: "https://www.youtube.com/watch?v=viAIxJWrv40",
+        owner: "120bpm",
+        title: "Lost frequencies",
+        origin: "youtube"
+      },
+      {
+        id: "https://www.youtube.com/watch?v=ZXtxiBgl5PY",
+        owner: "120bpm",
+        title: "Arilena Ara - Nëntori",
+        origin: "youtube"
       }
     ],
     currentVideo: {

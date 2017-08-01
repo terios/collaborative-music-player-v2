@@ -6,20 +6,22 @@ import { PlaylistItem } from "components";
 
 const PlaylistWrapper = styled.div`
   width: 30%;
-  padding-top: 22px;
-  max-height: 390px;
+  margin-top: 22px;
   overflow: scroll;
 `;
 
 const ListWrapper = styled(List)`padding: 0;`;
 
 const Playlist = props => {
-  console.log(props);
   return (
     <PlaylistWrapper>
       <ListWrapper>
         {props.playlist.map(entry =>
-          <PlaylistItem key={entry.id} video={entry} />
+          <PlaylistItem
+            key={entry.id}
+            video={entry}
+            selectVideo={props.selectVideo}
+          />
         )}
       </ListWrapper>
     </PlaylistWrapper>
