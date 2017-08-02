@@ -12,6 +12,7 @@ const VideoWrapper = styled.div`
   @media (max-width: 768px) {
     max-width: none;
     width: 100%;
+    padding: 0;
   }
 `;
 
@@ -34,31 +35,13 @@ const Owner = styled.div`
 // ratio = 1.77916667
 
 class Player extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      width: props.width || "600px",
-      height: props.height || "600px"
-    };
-
-    this.onResize = this.onResize.bind(this);
-  }
-
-  onResize(w, h) {
-    this.setState({
-      width: w,
-      height: h,
-      ratioHeigth: w / 1.77916667
-    });
-  }
   render() {
     return (
       <VideoWrapper className="lolo">
-        <ResizeDetector handleWidth handleHeight onResize={this.onResize} />
         <ReactPlayer
-          url={this.props.currentVideo.link}
+          url={this.props.currentVideo.id}
           width="100%"
-          height={this.state.ratioHeigth}
+          height={this.props.r}
           controls={true}
         />
         <VideoDescription>
@@ -75,7 +58,6 @@ class Player extends React.Component {
 }
 
 Player.propTypes = {
-  header: PropTypes.string,
   children: PropTypes.string
 };
 export default Player;

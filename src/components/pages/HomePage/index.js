@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { PageTemplate, Header } from "components";
-import { Player, Playlist } from "containers";
+import { Stage } from "containers";
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,8 +16,7 @@ const HomePage = () => {
   return (
     <PageTemplate header={<Header />}>
       <Wrapper>
-        <Player />
-        <Playlist />
+        <Stage />
       </Wrapper>
     </PageTemplate>
   );
