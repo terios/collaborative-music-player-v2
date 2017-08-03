@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
+  min-height: 400px;
 `;
 
 const AuthPage = () => {
