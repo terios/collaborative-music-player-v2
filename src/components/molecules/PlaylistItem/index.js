@@ -50,7 +50,7 @@ const PlaylistItem = props => {
   return (
     <ItemWrapper
       className="videobox"
-      onClick={() => props.selectVideo(props.video)}
+      onClick={() => props.selectVideo(props.videoIndex)}
     >
       <img src={this.getThumbnail(props.video)} />
       <VideoDetails>

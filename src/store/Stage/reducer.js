@@ -1,4 +1,4 @@
-import { SELECT_VIDEO } from "./actions";
+import { SELECT_VIDEO, NEXT_VIDEO, PREVIOUS_VIDEO } from "./actions";
 
 const initialState = {
   currentPlaylist: [
@@ -31,21 +31,27 @@ const initialState = {
       owner: "120bpm",
       title: "Arilena Ara - Nëntori",
       origin: "youtube"
+    },
+    {
+      owner: "Anas",
+      title: "Dark souls Soundtrack",
+      id: "https://www.youtube.com/watch?v=xggWJLgN-Es",
+      origin: "youtube"
     }
   ],
-  currentVideo: {
-    owner: "Anas",
-    title: "Dark souls Soundtrack",
-    link: "https://www.youtube.com/watch?v=xggWJLgN-Es",
-    origin: "youtube"
-  }
+  currentVideo: 0
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SELECT_VIDEO:
-      console.log(action, state);
-      state = { ...state, currentVideo: action.video };
-      return state;
+      return { ...state, currentVideo: action.video };
+    case NEXT_VIDEO:
+      console.log("in next");
+      //state = { ...state, currentVideo: state.currentVideo++ };
+      return { ...state, currentVideo: state.currentVideo + 1 };
+    case PREVIOUS_VIDEO:
+      //state = { ...state, currentVideo: currentVideo: state.currentVideo-- };
+      return { ...state, currentVideo: state.currentVideo - 1 };
     default:
       return state;
   }

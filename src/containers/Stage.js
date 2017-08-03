@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { Player, Playlist } from "components";
-import { selectVideo } from "store/actions";
 import ResizeDetector from "react-resize-detector";
+
+import { Player, Playlist } from "components";
+import { selectVideo, nextVideo, previousVideo } from "store/actions";
 
 const Wrapper = styled.div`
   display: flex;
@@ -53,16 +54,23 @@ class StageContainer extends React.Component {
 }
 
 StageContainer.propTypes = {
-  currentVideo: PropTypes.object
+  currentVideo: PropTypes.object,
+  playlistSize: PropTypes.number,
+  playlist: PropTypes.array,
+  videoIndex: PropTypes.number
 };
 
 const mapStateToProps = state => ({
-  currentVideo: state.stage.currentVideo,
-  playlist: state.stage.currentPlaylist
+  currentVideo: state.stage.currentPlaylist[state.stage.currentVideo],
+  videoIndex: state.stage.currentVideo,
+  playlist: state.stage.currentPlaylist,
+  playlistSize: state.stage.currentPlaylist.length
 });
 
 const mapDispatchToProps = dispatch => ({
-  selectVideo: video => dispatch(selectVideo(video))
+  selectVideo: video => dispatch(selectVideo(video)),
+  nextVideo: video => dispatch(nextVideo(video)),
+  previousVideo: video => dispatch(previousVideo(video))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StageContainer);
