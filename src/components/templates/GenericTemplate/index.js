@@ -2,12 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+
+import { lightBlueA700} from "material-ui/styles/colors";
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 3.75rem;
   min-height: 100vh;
   box-sizing: border-box;
+  background-color: ${lightBlueA700};
+
 `
 
 const Content = styled.section`

@@ -3,7 +3,7 @@ import { Route } from "react-router";
 
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import { HomePage, ContactPage, AuthPage } from "components/";
+import { HomePage, ContactPage, AuthPage, GamePage } from "components/";
 
 import theme from "./themes/default";
 
@@ -14,6 +14,7 @@ const App = () => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/auth" component={AuthPage} />
         <Route exact path="/contact" component={ContactPage} />
+        <Route exact path="/game" component={GamePage} />
       </div>
     </MuiThemeProvider>
   );
