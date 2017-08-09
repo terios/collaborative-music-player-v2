@@ -5,7 +5,6 @@ import Paper from "material-ui/Paper";
 import Divider from "material-ui/Divider";
 import FontIcon from "material-ui/FontIcon";
 import { blue900, grey50, red600 } from "material-ui/styles/colors";
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

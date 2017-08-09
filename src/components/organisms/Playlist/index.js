@@ -17,6 +17,7 @@ const ListWrapper = styled(
 )`padding: 0px 8px 0px 0px !important; height:80%;overflow: scroll;`;
 
 const NavigationBtn = styled(FlatButton)`width:45%; min-width:150px`;
+
 const ContributeSection = styled.div`
   height: 20%;
   display: flex;
