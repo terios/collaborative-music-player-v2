@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { Board } from "components";
-import { startGame, initiateGame, send } from "store/actions";
+import { startGame, initiateGame } from "store/actions";
 
 class GameContainer extends React.Component {
   render() {
