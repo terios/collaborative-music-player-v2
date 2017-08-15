@@ -37,7 +37,7 @@ const Owner = styled.div`
 class Player extends React.Component {
   render() {
     return (
-      <VideoWrapper className="lolo">
+      <VideoWrapper>
         <ReactPlayer
           url={this.props.currentVideo.id}
           width="100%"

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {cyan300} from "material-ui/styles/colors";
+import { cyan300 } from "material-ui/styles/colors";
+
+import { PlayerCard } from "components";
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,20 +35,34 @@ const Bet = styled.div`
   border: 4px solid ${cyan300};
   border-radius: 50%;
   text-align: center;
+  margin-top: -60px;
 `;
 
 const Stats = props => {
+  console.log(props);
   return (
     <Wrapper>
       <ScoreBanner>
-        <Score>0</Score>
+        <Score>
+          <PlayerCard
+            name={props.player1.name}
+            score={props.player1.score || 0}
+            status={props.player1.ready || false}
+          />
+        </Score>
         <div>
           <h1>Division Game</h1>
         </div>
-        <Score>1</Score>
+        <Score>
+          <PlayerCard
+            name={props.player2.name}
+            score={props.player2.score || 0}
+            status={props.player2.ready || false}
+          />
+        </Score>
       </ScoreBanner>
       <Bet>
-        30
+        {props.bet}
       </Bet>
     </Wrapper>
   );

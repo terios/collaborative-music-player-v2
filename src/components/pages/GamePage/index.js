@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { GenericTemplate, Stats, Board } from "components";
+import { GenericTemplate } from "components";
 
+import { Stats, Board } from "containers";
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -15,8 +16,8 @@ const GamePage = () => {
   return (
     <GenericTemplate>
       <Wrapper>
-        <Stats></Stats>
-        <Board></Board>
+        <Stats />
+        <Board />
       </Wrapper>
     </GenericTemplate>
   );
